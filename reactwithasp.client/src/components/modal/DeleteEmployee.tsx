@@ -27,13 +27,11 @@ export default function DeleteEmployee({ employeeId, onClose, isOpen }: Props) {
           title: 'Employee Deleted Successfully',
         });
 
-        console.log({ res: res.status });
         if (res.status === 200 || res.status === 204) {
          window.location.reload();
         }
 
       }catch(error) {
-        console.error(error);
         toast({
           title: `Employee Cannot be deleted at this time`,
           variant: `destructive`,

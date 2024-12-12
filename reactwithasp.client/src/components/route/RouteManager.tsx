@@ -21,21 +21,6 @@ const RouteManager = () => {
           if (location.pathname !== `/employees/${decodedToken.id}`) {
             navigate(`/employees/${decodedToken.id}`);
           }
-        //   console.log(location.pathname);
-        //   if (!location.pathname.includes('/employees')) {
-        //     console.log(location.pathname);
-        //     navigate(`/employees/${decodedToken.id}`);
-        //   } else {
-        //     if (location.pathname !== '/employees') {
-        //       console.log('HERE 1');
-        //       navigate(`/employees/${decodedToken.id}`);
-        //     } else {
-        //       if (!id) {
-        //         console.log('HERE 2');
-        //         navigate(`/employees/${decodedToken.id}`);
-        //       }
-        //     }
-        //   }
         }
       }
     }

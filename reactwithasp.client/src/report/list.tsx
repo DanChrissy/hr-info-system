@@ -127,8 +127,6 @@ export default function ReportList() {
           }
         />
       </div>
-
-      {/* <ReportsTable /> */}
     </div>
   );
 }

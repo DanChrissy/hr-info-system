@@ -1,6 +1,5 @@
 import EmployeesTable from '@/components/table/employee/data-table';
 import { Button } from '@/components/ui/button';
-import {} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function EmployeeList() {

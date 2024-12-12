@@ -23,11 +23,8 @@ export default function Login() {
   type LoginSchema = z.infer<typeof loginSchema>;
   const form = useForm<LoginSchema>({ resolver: zodResolver(loginSchema) });
 
-  // const token = sessionStorage.getItem('token');
   const navigate = useNavigate();
   const location = useLocation();
-
-  // if (token && isTokenValid(token!)) navigate('/employees');
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const togglePasswordView = () => setShowPassword(!showPassword);

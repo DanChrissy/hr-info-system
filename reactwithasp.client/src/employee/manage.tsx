@@ -51,7 +51,6 @@ export default function EmployeePage() {
         setFormData(result.data);
       }
     } catch (error) {
-      console.error(error);
     }
     setIsLoading(false);
   };
@@ -105,7 +104,6 @@ export default function EmployeePage() {
 
       navigate(`/employees`);
     } catch (error) {
-      console.error(error);
       toast({
         title: `Cannot ${userId ? 'Update' : 'Create'} Employee at this time`,
         variant: `destructive`,

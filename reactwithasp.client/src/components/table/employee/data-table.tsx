@@ -1,5 +1,4 @@
-import { columns as defaultColumns } from './columns';
-// import { api } from "~/utils/api";
+import { columns as defaultColumns } from './columns';;
 import { DataTableToolbar } from './table-toolbar';
 import { DataTable } from '../BaseDataTable';
 import { useEffect, useState } from 'react';

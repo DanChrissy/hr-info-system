@@ -18,7 +18,6 @@ export function TableActions({ data }: { data: Employee }) {
   const navigate = useNavigate();
   const { id } = decodeToken(sessionStorage.getItem('token')!) as DecodedToken;
   const [isDelete, setIsDelete] = useState<boolean>(false);
-  console.log({ id, data: data.id });
   return (
     <>
       <DropdownMenu>

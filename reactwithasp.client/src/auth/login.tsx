@@ -55,14 +55,15 @@ export default function Login() {
     }
   };
 
-  useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    if (location.pathname === '/auth/login') {
-      if (isTokenValid(token!)) {
-        navigate('/employees');
-      }
-    }
-  }, [location, navigate]);
+  // useEffect(() => {
+  //   const token = sessionStorage.getItem('token');
+  //   if (location.pathname === '/auth/login') {
+  //     if (isTokenValid(token!)) {
+  //       console.log('HERE 2');
+  //       navigate('/employees');
+  //     }
+  //   }
+  // }, [location, navigate]);
 
   return (
     <div className="flex h-full overflow-hidden min-w-full bg-white py-24 justify-center lg:py-0 lg:items-center">

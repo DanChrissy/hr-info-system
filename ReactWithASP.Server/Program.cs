@@ -3,7 +3,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
+
 var builder = WebApplication.CreateBuilder(args);
+DotNetEnv.Env.Load();
+
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddSingleton<JwtTokenService>();
@@ -11,10 +17,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        // policy.WithOrigins("https://localhost:55536") // React frontend URL
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()                    // Allow all HTTP methods (GET, POST, etc.)
-              .AllowAnyHeader();                   // Allow all headers
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONTEND_URL")) 
+              .AllowAnyMethod()                    
+              .AllowAnyHeader();                   
     });
 });
 
@@ -48,9 +53,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -81,6 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+DbSeeder.Seed(app.Services);
 
 app.UseHttpsRedirection();
 

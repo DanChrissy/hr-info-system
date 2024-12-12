@@ -23,6 +23,8 @@ const RouteManager = () => {
           }
         }
       }
+    } else {
+      navigate('/auth/login');
     }
   }, [navigate, location, id]);
 

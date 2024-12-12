@@ -15,12 +15,12 @@ public class AppDbContext: DbContext
             {
                 if (entry.State == EntityState.Added)
                 {
-                    employee.CreatedAt = DateTime.UtcNow;  // Set CreatedAt when adding a new entity
-                    employee.UpdatedAt = DateTime.UtcNow;  // Set UpdatedAt when adding a new entity
+                    employee.CreatedAt = DateTime.UtcNow; 
+                    employee.UpdatedAt = DateTime.UtcNow;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    employee.UpdatedAt = DateTime.UtcNow;  // Set UpdatedAt when modifying an existing entity
+                    employee.UpdatedAt = DateTime.UtcNow;
                 }
             }
         }
@@ -35,16 +35,16 @@ public class AppDbContext: DbContext
             {
                 if (entry.State == EntityState.Added)
                 {
-                    employee.CreatedAt = DateTime.UtcNow;  // Set CreatedAt when adding a new entity
-                    employee.UpdatedAt = DateTime.UtcNow;  // Set UpdatedAt when adding a new entity
+                    employee.CreatedAt = DateTime.UtcNow;
+                    employee.UpdatedAt = DateTime.UtcNow;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    employee.UpdatedAt = DateTime.UtcNow;  // Set UpdatedAt when modifying an existing entity
+                    employee.UpdatedAt = DateTime.UtcNow; 
                 }
             }
         }
 
-        return await base.SaveChangesAsync(cancellationToken);  // Ensure async operation with cancellation support
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }

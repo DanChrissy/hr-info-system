@@ -11,8 +11,8 @@ public static class DbSeeder
         if (!context.Employees.Any())
         {
 
-            var phoneNumber = "8761111111";
-            var firstName = "Super";
+            var phoneNumber = Environment.GetEnvironmentVariable("SEEDER_PHONE");
+            var firstName = Environment.GetEnvironmentVariable("SEEDER_FIRST");
             var password = PasswordHasher.HashPassword($"{phoneNumber}.{firstName}");
             context.Employees.Add(
                 new Employee {

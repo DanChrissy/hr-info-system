@@ -1,6 +1,6 @@
 import { loginSchema } from '@/schema/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ChangeEvent, MouseEvent, useState, useEffect } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {
@@ -15,8 +15,7 @@ import { Input } from '@/components/ui/input';
 import { LuEye, LuEyeOff } from 'react-icons/lu';
 import { Button } from '@/components/ui/button';
 import axios from '@/lib/axios';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { isTokenValid } from '@/lib/token';
+import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
 export default function Login() {
@@ -24,7 +23,6 @@ export default function Login() {
   const form = useForm<LoginSchema>({ resolver: zodResolver(loginSchema) });
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const togglePasswordView = () => setShowPassword(!showPassword);
@@ -54,16 +52,6 @@ export default function Login() {
         })
     }
   };
-
-  // useEffect(() => {
-  //   const token = sessionStorage.getItem('token');
-  //   if (location.pathname === '/auth/login') {
-  //     if (isTokenValid(token!)) {
-  //       console.log('HERE 2');
-  //       navigate('/employees');
-  //     }
-  //   }
-  // }, [location, navigate]);
 
   return (
     <div className="flex h-full overflow-hidden min-w-full bg-white py-24 justify-center lg:py-0 lg:items-center">
